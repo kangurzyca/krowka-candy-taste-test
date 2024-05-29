@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* This should be a collage of Krówka candy and cow pictures */
+    background-size: cover;
+    color: #333;
+}
+
+#app {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+}
+
+#add-tab-button {
+    margin-bottom: 20px;
+}
+
+.tab {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.tab input[type="text"],
+.tab input[type="number"],
+.tab select {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.tab label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tab .edit-button,
+.tab .save-button {
+    margin-right: 10px;
+}
+
+#scores-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scores-table th, #scores-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#scores-table .remove-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.tab-inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.tab-inputs div {
+    margin: 10px;
+}
+
+input[type="number"] {
+    width: 100px;
+}
+
+.color-coded {
+    font-weight: bold;
+}
+
+.color-0 { color: red; }
+.color-1 { color: #cc3300; }
+color-2 { color: #996600; }
+.color-3 { color: #669900; }
+.color-4 { color: #33cc00; }
+.color-5 { color: green; }
+.color-6 { color: #00cc33; }
+.color-7 { color: #00cc66; }
+.color-8 { color: #00cc99; }
+.color-9 { color: #00cccc; }
+.color-10 { color: cyan; }
