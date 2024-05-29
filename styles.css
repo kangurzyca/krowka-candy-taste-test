@@ -1,21 +1,35 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('background.jpg'); /* This should be a collage of Krówka candy and cow pictures */
+    background-image: url('assets/background.jpg');
     background-size: cover;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 #app {
-    margin: 20px;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    max-width: 800px;
-    margin: auto;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 #add-tab-button {
     margin-bottom: 20px;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-tab-button:hover {
+    background-color: #45a049;
 }
 
 .tab {
@@ -25,56 +39,83 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .tab input[type="text"],
 .tab input[type="number"],
 .tab select {
+    width: calc(100% - 20px);
     margin-bottom: 10px;
-    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .tab label {
     display: block;
     margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .tab .edit-button,
 .tab .save-button {
-    margin-right: 10px;
+    width: calc(50% - 10px);
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.tab .edit-button:hover,
+.tab .save-button:hover {
+    background-color: #45a049;
 }
 
 #scores-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
 #scores-table th, #scores-table td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
+    font-size: 14px;
+}
+
+#scores-table th {
+    background-color: #f2f2f2;
 }
 
 #scores-table .remove-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
     background-color: red;
     color: white;
     border: none;
-    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+#scores-table .remove-button:hover {
+    background-color: darkred;
 }
 
 .tab-inputs {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.tab-inputs div {
-    margin: 10px;
-}
-
-input[type="number"] {
-    width: 100px;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .color-coded {
@@ -83,8 +124,8 @@ input[type="number"] {
 
 .color-0 { color: red; }
 .color-1 { color: #cc3300; }
-color-2 { color: #996600; }
-.color-3 { color: #669900; }
+.color-2 { color: #996600; }
+color-3 { color: #669900; }
 .color-4 { color: #33cc00; }
 .color-5 { color: green; }
 .color-6 { color: #00cc33; }
