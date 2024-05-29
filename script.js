@@ -43,6 +43,7 @@ function addTab(event) {
         </div>
         <div>
             <button class="save-button">Save</button>
+            <button class="cancel-button">Cancel</button>
             <button class="edit-button">Edit</button>
         </div>
         <div class="overall-score">Overall Score: <span class="score">0</span></div>
@@ -52,6 +53,9 @@ function addTab(event) {
 
     const saveButton = tabContainer.querySelector('.save-button');
     saveButton.addEventListener('click', () => saveScores(tabContainer));
+
+    const cancelButton = tabContainer.querySelector('.cancel-button');
+    cancelButton.addEventListener('click', closeTab);
 
     const editButton = tabContainer.querySelector('.edit-button');
     editButton.addEventListener('click', () => editScores(tabContainer));
