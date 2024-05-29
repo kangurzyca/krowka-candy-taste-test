@@ -39,6 +39,7 @@ function addTab() {
             <button class="save-button">Save</button>
             <button class="edit-button">Edit</button>
         </div>
+        <p style="font-size:0.9em">Score 5 means that krówka is a flawless krówka. If you find something disturbing in your krówka you substract a point. If you find something amazing about your krówka then you add a point. Example: krówka tastes quite good overall so score is to be 5 but there is an unwanted hint of mould in the aftertaste - you substract one point and taste score is 4.</p>
         <div class="overall-score">Overall Score: <span class="score">0</span></div>
     `;
 
