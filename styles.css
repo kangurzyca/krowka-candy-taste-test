@@ -141,3 +141,17 @@ body {
 .color-8 { color: #00cc99; }
 .color-9 { color: #00cccc; }
 .color-10 { color: cyan; }
+
+.cancel-button {
+    background-color: #f3f3f3;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: #e0e0e0;
+}
