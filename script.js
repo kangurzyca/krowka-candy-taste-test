@@ -10,23 +10,23 @@ function addTab() {
         <div class="tab-inputs">
             <div>
                 <label for="candy-name">Candy Name:</label>
-                <input type="text" class="candy-name">
+                <input type="text" class="candy-name" placeholder="Enter candy name">
             </div>
             <div>
                 <label for="appearance">Appearance:</label>
-                <input type="number" class="appearance" min="0" max="10">
+                <input type="number" class="appearance" min="0" max="10" placeholder="0-10">
             </div>
             <div>
                 <label for="taste">Taste:</label>
-                <input type="number" class="taste" min="0" max="10">
+                <input type="number" class="taste" min="0" max="10" placeholder="0-10">
             </div>
             <div>
                 <label for="texture">Texture:</label>
-                <input type="number" class="texture" min="0" max="10">
+                <input type="number" class="texture" min="0" max="10" placeholder="0-10">
             </div>
             <div>
                 <label for="sweetness">Sweetness:</label>
-                <input type="number" class="sweetness" min="0" max="10">
+                <input type="number" class="sweetness" min="0" max="10" placeholder="0-10">
             </div>
             <div>
                 <label for="edit-candy">Edit Candy:</label>
@@ -58,10 +58,10 @@ function addTab() {
 
 function saveScores(tab) {
     const name = tab.querySelector('.candy-name').value;
-    const appearance = parseInt(tab.querySelector('.appearance').value) || 0;
-    const taste = parseInt(tab.querySelector('.taste').value) || 0;
-    const texture = parseInt(tab.querySelector('.texture').value) || 0;
-    const sweetness = parseInt(tab.querySelector('.sweetness').value) || 0;
+    const appearance = Math.min(Math.max(parseInt(tab.querySelector('.appearance').value) || 0, 0), 10);
+    const taste = Math.min(Math.max(parseInt(tab.querySelector('.taste').value) || 0, 0), 10);
+    const texture = Math.min(Math.max(parseInt(tab.querySelector('.texture').value) || 0, 0), 10);
+    const sweetness = Math.min(Math.max(parseInt(tab.querySelector('.sweetness').value) || 0, 0), 10);
 
     const overallScore = appearance + taste + texture + sweetness;
 
