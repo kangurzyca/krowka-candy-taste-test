@@ -3,6 +3,9 @@ document.getElementById('add-tab-button').addEventListener('click', addTab);
 const candies = loadCandiesFromStorage();
 
 function addTab() {
+    const existingTabs = document.querySelectorAll('.tab');
+    if (existingTabs.length > 0) return; // If a tab is already open, do not add another one
+
     const tabContainer = document.createElement('div');
     tabContainer.className = 'tab';
 
@@ -39,7 +42,6 @@ function addTab() {
             <button class="save-button">Save</button>
             <button class="edit-button">Edit</button>
         </div>
-        <p style="font-size:0.9em">Score 5 means that krówka is a flawless krówka. If you find something disturbing in your krówka you substract a point. If you find something amazing about your krówka then you add a point. Example: krówka tastes quite good overall so score is to be 5 but there is an unwanted hint of mould in the aftertaste - you substract one point and taste score is 4.</p>
         <div class="overall-score">Overall Score: <span class="score">0</span></div>
     `;
 
@@ -55,6 +57,19 @@ function addTab() {
     editSelect.addEventListener('change', () => updateFields(tabContainer, editSelect.value));
 
     updateEditOptions();
+
+    // Disable the "Add Taste Test" button
+    this.disabled = true;
+}
+
+function closeTab() {
+    const tabContainer = document.querySelector('.tab');
+    if (tabContainer) {
+        tabContainer.remove();
+    }
+
+    // Re-enable the "Add Taste Test" button
+    document.getElementById('add-tab-button').disabled = false;
 }
 
 function saveScores(tab) {
@@ -73,6 +88,8 @@ function saveScores(tab) {
     saveCandiesToStorage();
     renderTable();
     updateEditOptions();
+
+    closeTab(); // Close the tab after saving scores
 }
 
 function updateFields(tab, name) {
@@ -158,3 +175,13 @@ function renderTable() {
 // Initial render of the table from localStorage
 renderTable();
 updateEditOptions();
+
+// Event listener to prevent invalid inputs in number fields
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('input', () => {
+        const value = parseInt(input.value);
+        if (isNaN(value) || value < 0 || value > 10) {
+            input.value = '';
+        }
+    });
+});
