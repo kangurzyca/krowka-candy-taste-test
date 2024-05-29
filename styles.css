@@ -96,6 +96,9 @@ body {
     text-align: center;
     font-size: 14px;
 }
+#scores-table td{
+    font-size:1.3em;
+}
 
 #scores-table th {
     background-color: #f2f2f2;
