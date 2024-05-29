@@ -54,6 +54,11 @@ body {
     box-sizing: border-box;
 }
 
+.tab input[type="text"]::placeholder,
+.tab input[type="number"]::placeholder {
+    color: #999;
+}
+
 .tab label {
     display: block;
     margin-bottom: 5px;
@@ -127,9 +132,9 @@ body {
 .color-2 { color: #996600; }
 color-3 { color: #669900; }
 .color-4 { color: #33cc00; }
-.color-5 { color: green; }
-.color-6 { color: #00cc33; }
-.color-7 { color: #00cc66; }
-.color-8 { color: #00cc99; }
-.color-9 { color: #00cccc; }
-.color-10 { color: cyan; }
+color-5 { color: green; }
+color-6 { color: #00cc33; }
+color-7 { color: #00cc66; }
+color-8 { color: #00cc99; }
+color-9 { color: #00cccc; }
+color-10 { color: cyan; }
