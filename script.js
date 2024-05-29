@@ -1,6 +1,6 @@
 document.getElementById('add-tab-button').addEventListener('click', addTab);
 
-const candies = {};
+const candies = loadCandiesFromStorage();
 
 function addTab() {
     const tabContainer = document.createElement('div');
@@ -69,28 +69,9 @@ function saveScores(tab) {
 
     candies[name] = { appearance, taste, texture, sweetness, overallScore };
 
-    const tbody = document.querySelector('#scores-table tbody');
-    let row = tbody.querySelector(`tr[data-name="${name}"]`);
-    if (!row) {
-        row = document.createElement('tr');
-        row.setAttribute('data-name', name);
-        tbody.appendChild(row);
-    }
-    
-    row.innerHTML = `
-        <td>${name}</td>
-        <td class="color-coded color-${appearance}">${appearance}</td>
-        <td class="color-coded color-${taste}">${taste}</td>
-        <td class="color-coded color-${texture}">${texture}</td>
-        <td class="color-coded color-${sweetness}">${sweetness}</td>
-        <td>${overallScore}</td>
-        <td><button class="remove-button">Remove</button></td>
-    `;
-
-    row.querySelector('.remove-button').addEventListener('click', () => removeRow(name));
-
+    saveCandiesToStorage();
+    renderTable();
     updateEditOptions();
-    sortScoresTable();
 }
 
 function updateFields(tab, name) {
@@ -123,8 +104,9 @@ function editScores(tab) {
 }
 
 function removeRow(name) {
-    document.querySelector(`#scores-table tbody tr[data-name="${name}"]`).remove();
     delete candies[name];
+    saveCandiesToStorage();
+    renderTable();
     updateEditOptions();
 }
 
@@ -134,3 +116,44 @@ function sortScoresTable() {
         .sort((a, b) => b.cells[5].textContent - a.cells[5].textContent)
         .forEach(tr => tbody.appendChild(tr));
 }
+
+function saveCandiesToStorage() {
+    localStorage.setItem('candies', JSON.stringify(candies));
+}
+
+function loadCandiesFromStorage() {
+    const storedCandies = localStorage.getItem('candies');
+    return storedCandies ? JSON.parse(storedCandies) : {};
+}
+
+function renderTable() {
+    const tbody = document.querySelector('#scores-table tbody');
+    tbody.innerHTML = ''; // Clear the table body
+
+    Object.keys(candies).forEach(name => {
+        const { appearance, taste, texture, sweetness, overallScore } = candies[name];
+
+        const row = document.createElement('tr');
+        row.setAttribute('data-name', name);
+
+        row.innerHTML = `
+            <td>${name}</td>
+            <td class="color-coded color-${appearance}">${appearance}</td>
+            <td class="color-coded color-${taste}">${taste}</td>
+            <td class="color-coded color-${texture}">${texture}</td>
+            <td class="color-coded color-${sweetness}">${sweetness}</td>
+            <td>${overallScore}</td>
+            <td><button class="remove-button">Remove</button></td>
+        `;
+
+        row.querySelector('.remove-button').addEventListener('click', () => removeRow(name));
+
+        tbody.appendChild(row);
+    });
+
+    sortScoresTable();
+}
+
+// Initial render of the table from localStorage
+renderTable();
+updateEditOptions();
