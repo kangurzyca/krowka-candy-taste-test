@@ -1,4 +1,5 @@
 document.getElementById('add-tab-button').addEventListener('click', addTab);
+document.getElementById('add-tab-button').addEventListener('touchstart', addTab);
 
 const candies = loadCandiesFromStorage();
 
