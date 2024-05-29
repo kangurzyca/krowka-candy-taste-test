@@ -3,7 +3,9 @@ document.getElementById('add-tab-button').addEventListener('touchstart', addTab)
 
 const candies = loadCandiesFromStorage();
 
-function addTab() {
+function addTab(event) {
+    event.preventDefault(); // Prevent default action for touchstart event
+
     const existingTabs = document.querySelectorAll('.tab');
     if (existingTabs.length > 0) return; // If a tab is already open, do not add another one
 
@@ -60,7 +62,7 @@ function addTab() {
     updateEditOptions();
 
     // Disable the "Add Taste Test" button
-    this.disabled = true;
+    event.target.disabled = true;
 }
 
 function closeTab() {
